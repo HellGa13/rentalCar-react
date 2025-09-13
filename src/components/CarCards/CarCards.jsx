@@ -13,7 +13,7 @@ const CarCards = ({ car }) => {
   const {
     id,
     year,
-    brand, // ← заміна make на brand
+    brand,
     model,
     img,
     rentalPrice,
@@ -24,7 +24,7 @@ const CarCards = ({ car }) => {
   } = car;
 
   const isFavorite = favorites?.some(favCar => favCar.id === id);
-  const { city, country } = getLocationData(address, car);
+  const { city, country } = getLocationData(address);
 
   const handleToggleFavorite = () => {
     isFavorite
@@ -32,8 +32,8 @@ const CarCards = ({ car }) => {
       : dispatch(setToFavorites(car));
   };
 
-  const handleLearnMore = () => {
-    navigate(`/cars/${id}`);
+  const handleReadMore = () => {
+    navigate(`/catalog/${id}`);
   };
 
   return (
@@ -77,7 +77,7 @@ const CarCards = ({ car }) => {
           <button
             type="button"
             className="learn-more-button mt-4 w-full"
-            onClick={handleLearnMore}
+            onClick={handleReadMore}
           >
             Read more
           </button>

@@ -7,7 +7,7 @@ import { fetchCars } from '../../redux/cars/carsSlice';
 
 import { filterCars } from '../../utils/filterCars';
 import Filter from '../../components/Filters/Filters';
-import { setFilter } from '../../redux/filters/filtersSlice';
+import { resetFilters } from '../../redux/filters/filtersSlice';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -18,11 +18,11 @@ const CatalogPage = () => {
   const filteredCars = filterCars(cars, filter);
 
   useEffect(() => {
-    dispatch(fetchCars());
+  dispatch(resetFilters());
   }, [dispatch]);
-
+  
   useEffect(() => {
-    dispatch(setFilter(null));
+    dispatch(fetchCars());
   }, [dispatch]);
 
   return (

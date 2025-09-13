@@ -1,20 +1,43 @@
-export const filterCars = (cars, filter) => {
-  if (!filter) {
+export const filterCars = (cars, filters) => {
+  if (!cars || !Array.isArray(cars) || cars.length === 0) {
+    return [];
+  }
+
+  if (!filters || Object.values(filters).every(value => !value)) {
     return cars;
   }
 
   return cars.filter(car => {
-    const rentalPrice = parseInt(car.rentalPrice.substring(1));
-    const mileage = parseFloat(car.mileage);
+    if (filters.brand && filters.brand !== '') {
+      if (car.brand !== filters.brand) {
+        return false;
+      }
+    }
 
-    const brandMatch =!filter.brand ||(car.make && filter.brand && car.make.toLowerCase() === filter.brand.toLowerCase());
-    const priceMatch = !filter.price || rentalPrice <= parseInt(filter.price);
-    const minMileageMatch = !filter.from || mileage >= filter.from;
-    const maxMileageMatch = !filter.to || mileage <= filter.to;
-    const companyMatch =
-      !filter.rentalCompany ||
-      car.rentalCompany.toLowerCase() === filter.rentalCompany.toLowerCase();
+    if (filters.price && filters.price !== '') {
+      const maxPrice = parseInt(filters.price);
+      const carPrice = parseInt(car.rentalPrice?.toString().replace('$', '')) || 0;
+      if (carPrice > maxPrice) {
+        return false;
+      }
+    }
 
-    return brandMatch && priceMatch && minMileageMatch && maxMileageMatch && companyMatch;
+    if (filters.from && filters.from !== '') {
+      const minMileage = parseInt(filters.from);
+      const carMileage = parseInt(car.mileage?.toString().replace(/,/g, '')) || 0;
+      if (carMileage < minMileage) {
+        return false;
+      }
+    }
+
+    if (filters.to && filters.to !== '') {
+      const maxMileage = parseInt(filters.to);
+      const carMileage = parseInt(car.mileage?.toString().replace(/,/g, '')) || 0;
+      if (carMileage > maxMileage) {
+        return false;
+      }
+    }
+
+    return true;
   });
 };

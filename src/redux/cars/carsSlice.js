@@ -5,10 +5,13 @@ const BASE_URL = 'https://car-rental-api.goit.global';
 
 export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
-  async (params, thunkAPI) => {
+  async (params = {}, thunkAPI) => {
     try {
       const response = await axios.get(`${BASE_URL}/cars`, {
-        params,
+        params: {
+          limit: 25, // або більше
+          ...params
+        },
       });
       return response.data;
     } catch (error) {

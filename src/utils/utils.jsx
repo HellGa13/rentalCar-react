@@ -1,34 +1,13 @@
-const parseAddress = (address) => {
-  if (!address) return { city: '', country: '' };
-  
-  try {
-    const addressParts = address.split(',').map(part => part.trim());
-    
-    if (addressParts.length >= 2) {
-      const country = addressParts[addressParts.length - 1];
-      const city = addressParts[addressParts.length - 2];
-      
-      return { city, country };
-    } else if (addressParts.length === 1) {
-      return { city: addressParts[0], country: '' };
-    }
-    
-    return { city: '', country: '' };
-  } catch (error) {
-    console.error('Error parsing address:', error);
-    return { city: '', country: '' };
-  }
-};
-
 export const getCarData = car => {
   const { type, mileage, functionalities } = car;
   return { type, mileage, functionalities };
 };
 
-export const getLocationData = (address, car) => {
-  const { city, country } = parseAddress(address);
-  const { rentalCompany } = car;
-  return [city, country, rentalCompany];
+export const getLocationData = (address) => {
+  if (!address) return { city: 'Unknown', country: 'Unknown' };
+
+  const [country, city] = address.split(',').map(part => part.trim());
+  return { city, country };
 };
 
 export const formatPrice = (price) => {

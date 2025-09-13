@@ -15,7 +15,7 @@ import { formatBigNumbers } from '../../utils/formatBigNumbers';
 
 import styles from './CarDetailsPage.module.css';
 
-export const CarDetailsPage = () => {
+const CarDetailsPage = () => {
   const dispatch = useDispatch();
   const { carId } = useParams();
 
@@ -111,3 +111,5 @@ export const CarDetailsPage = () => {
     </div>
   );
 };
+
+export default CarDetailsPage;
