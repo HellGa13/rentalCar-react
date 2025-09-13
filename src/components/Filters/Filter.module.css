@@ -1,0 +1,236 @@
+/* Filter Component Styles */
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0.75rem;
+}
+
+.form.pointer-events-none {
+    pointer-events: none;
+}
+
+.form.opacity-60 {
+    opacity: 0.6;
+}
+
+.form .flex {
+    display: flex;
+}
+
+.form .flex-wrap {
+    flex-wrap: wrap;
+}
+
+.form .items-center {
+    align-items: center;
+}
+
+.form .justify-between {
+    justify-content: space-between;
+}
+
+.form .gap-2 {
+    gap: 0.5rem;
+}
+
+.form .gap-3 {
+    gap: 0.75rem;
+}
+
+.form .mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.form .flex-col {
+    flex-direction: column;
+}
+
+/* Select wrapper styles */
+.select-wrapper {
+    margin-bottom: 0.5rem;
+}
+
+.select-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+/* Select styles */
+.select-brand,
+.select-price {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: white;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.select-brand:focus,
+.select-price:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select-placeholder {
+    color: #9ca3af;
+}
+
+.select-text {
+    color: #374151;
+}
+
+/* Mileage input styles */
+.select-from,
+.select-to {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: white;
+    font-size: 1rem;
+    color: #374151;
+    position: relative;
+}
+
+.select-from:focus,
+.select-to:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select-from {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.select-to {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Mileage container with divider */
+.relative {
+    position: relative;
+}
+
+.relative.flex {
+    display: flex;
+}
+
+.relative.flex::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 1px;
+    height: 48px;
+    background-color: rgba(138, 138, 137, 0.2);
+}
+
+/* Placeholder spans for inputs */
+.select-placeholder {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Hide placeholder when input has value or is focused */
+.select-from:focus+.select-placeholder,
+.select-from:not(:placeholder-shown)+.select-placeholder,
+.select-to:focus+.select-placeholder,
+.select-to:not(:placeholder-shown)+.select-placeholder {
+    opacity: 0;
+}
+
+/* Error styles */
+.error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.error.opacity-0 {
+    opacity: 0;
+}
+
+.error.opacity-100 {
+    opacity: 1;
+}
+
+.error.flex {
+    display: flex;
+}
+
+.error.items-center {
+    align-items: center;
+}
+
+.error.justify-between {
+    justify-content: space-between;
+}
+
+.error.gap-1 {
+    gap: 0.25rem;
+}
+
+/* Button styles */
+.buttons-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.button-search {
+    padding: 0.75rem 1.5rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.button-search:hover {
+    background-color: #2563eb;
+}
+
+.button-search:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.button-search:active {
+    background-color: #1d4ed8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .formContainer {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .buttonsWrapper {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .buttonSearch {
+        flex: 1;
+        max-width: 120px;
+    }
+}

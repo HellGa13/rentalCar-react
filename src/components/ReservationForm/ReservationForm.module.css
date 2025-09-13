@@ -1,0 +1,43 @@
+.wrapper {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fieldGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+}
+
+.textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    resize: vertical;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.buttonWrapper {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
