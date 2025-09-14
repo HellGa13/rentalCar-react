@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -9,9 +10,9 @@ export default function HomePage() {
           <p>
             Reliable and budget-friendly rentals for any journey
           </p>
-          <a href="/catalog" className={style.button}>
+          <Link to="/catalog" className={style.button}>
             View Catalog
-          </a>
+          </Link>
         </div>
       </div>
     </section>

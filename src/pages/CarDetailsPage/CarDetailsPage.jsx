@@ -84,8 +84,8 @@ const CarDetailsPage = () => {
           </div>
           
           <div className={styles.locationSection}>
-            <svg className={styles.icon}>
-              <use href="/public/icon.svg#icon-Location" />
+            <svg className={styles.icon} width="16" height="16">
+              <use href="/icon.svg#icon-Location" />
             </svg>
             <p className={styles.locationText}>{`${city}, ${country}`}</p>
             <p className={styles.mileageText}>
@@ -102,8 +102,8 @@ const CarDetailsPage = () => {
           <ul className={styles.list}>
             {carData.rentalConditions.map((item, index) => (
               <li key={`cond-${index}`} className={styles.listItem}>
-                <svg className={styles.icon}>
-                  <use href="/public/icon.svg#icon-Group" />
+                <svg className={styles.icon} width="16" height="16">
+                  <use href="/icon.svg#icon-Group" />
                 </svg>
                 {item}
               </li>
@@ -115,26 +115,26 @@ const CarDetailsPage = () => {
           <p className={styles.sectionTitle}>Car Specifications:</p>
           <ul className={styles.list}>
             <li className={styles.listItem}>
-              <svg className={styles.icon}>
-                <use href="/public/icon.svg#icon-calendar" />
+              <svg className={styles.icon} width="16" height="16">
+                <use href="/icon.svg#icon-calendar" />
               </svg>
               <p>{`Year: ${carData.year}`}</p>
             </li>
             <li className={styles.listItem}>
-              <svg className={styles.icon}>
-                <use href="/public/icon.svg#icon-car" />
+              <svg className={styles.icon} width="16" height="16">
+                <use href="/icon.svg#icon-car" />
               </svg>
               <p>{`Type: ${carData.type}`}</p>
             </li>
             <li className={styles.listItem}>
-              <svg className={styles.icon}>
-                <use href="/public/icon.svg#icon-fuel-pump" />
+              <svg className={styles.icon} width="16" height="16">
+                <use href="/icon.svg#icon-fuel-pump" />
               </svg>
               <p>{`Fuel Consumption: ${carData.fuelConsumption}`}</p>
             </li>
             <li className={styles.listItem}>
-              <svg className={styles.icon}>
-                <use href="/public/icon.svg#icon-gear" />
+              <svg className={styles.icon} width="16" height="16">
+                <use href="/icon.svg#icon-gear" />
               </svg>
               <p>{`Engine Size: ${carData.engineSize}`}</p>
             </li>
@@ -146,16 +146,16 @@ const CarDetailsPage = () => {
           <ul className={styles.list}>
             {carData.functionalities.map((item, index) => (
               <li key={`func-${index}`} className={styles.listItem}>
-                <svg className={styles.icon}>
-                  <use href="/public/icon.svg#icon-Group" />
+                <svg className={styles.icon} width="16" height="16">
+                  <use href="/icon.svg#icon-Group" />
                 </svg>
                 {item}
               </li>
             ))}
             {carData.accessories.map((item, index) => (
               <li key={`acc-${index}`} className={styles.listItem}>
-                <svg className={styles.icon}>
-                  <use href="/public/icon.svg#icon-Group" />
+                <svg className={styles.icon} width="16" height="16">
+                  <use href="/icon.svg#icon-Group" />
                 </svg>
                 {item}
               </li>
@@ -178,7 +178,9 @@ const CarDetailsPage = () => {
               <p className={styles.dialogDescription}>
                 Our manager will contact you soon.
               </p>
-              <button className={styles.button} onClick={() => setIsDialogOpen(false)}>Okay</button>
+              <button className={styles.button} onClick={() => setIsDialogOpen(false)}>
+                Okay
+              </button>
             </div>
           </div>
         </div>
