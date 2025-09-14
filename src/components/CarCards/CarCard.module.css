@@ -1,8 +1,3 @@
-.carCard {
-    /* Наприклад, padding або background */
-    padding: 16px;
-    background-color: var(--color-white);
-}
 
 .cardInner {
     overflow: hidden;

@@ -32,8 +32,6 @@ const CarCards = ({ car }) => {
     e.preventDefault();
     e.stopPropagation();
     
-    console.log('Toggle favorite clicked:', { id, isFavorite }); // Для дебагу
-    
     if (isFavorite) {
       dispatch(removeFromFavorites(car));
     } else {
@@ -46,7 +44,7 @@ const CarCards = ({ car }) => {
   };
 
   return (
-    <div className={css.carCard}>
+    <div>
       <div className={css.cardInner}>
         <button
           type="button"
