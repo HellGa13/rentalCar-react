@@ -1,0 +1,13 @@
+.cardInfoBlock {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--color-light-gray);
+}
+
+.cardInfoBlockMargin {
+    margin-bottom: 28px;
+}
+
+.textDescription {
+    color: var(--color-light-gray);
+}

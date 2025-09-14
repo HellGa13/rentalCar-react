@@ -1,0 +1,26 @@
+.cardsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
+    padding: 0;
+    list-style: none;
+}
+
+.buttonLoad {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-black);
+    border: 1px solid #3470ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttonLoad:hover {
+    background-color: #1f59d1;
+    color: var(--color-white);
+}

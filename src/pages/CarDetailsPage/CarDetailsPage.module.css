@@ -1,48 +1,177 @@
-.car-details-wrapper {
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+.wrapper {
+    padding: 84px 120px 124px;
+    width: 100vw;
     display: flex;
-    gap: 40px;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
 }
 
-.car-details-left,
-.car-details-right {
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 20px;
+.left {
+    display: flex;
+    flex-direction: column;
+    margin-right: 72px;
+    width: 640px;
+    min-width: 640px;
 }
 
-.car-details-image {
-    border-radius: 16px;
-    height: 400px;
+.image {
+    border-radius: 24px;
+    height: 512px;
     width: 100%;
     object-fit: cover;
+    margin-bottom: 40px;
 }
 
-.car-details-section {
-    margin-bottom: 20px;
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
-.car-details-section h2 {
-    margin: 0 0 8px;
+.topSection {
+    margin-bottom: 68px;
+}
+
+.titleSection {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+.title {
     font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0;
 }
 
-.car-details-section span {
-    font-size: 14px;
-    color: #666;
+.carId {
+    cursor: pointer;
+    color: #9ca3af;
 }
 
-.car-details-section p {
-    margin: 4px 0;
+.locationSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
 }
 
-.car-details-section ul {
-    padding-left: 20px;
-    margin: 8px 0;
+.locationText {
+    margin-right: 16px;
+    font-weight: 500;
+    margin: 0;
 }
 
-.car-details-section ul li {
-    margin-bottom: 4px;
+.mileageText {
+    font-weight: 500;
+    margin: 0;
+}
+
+.price {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #3b82f6;
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+.description {
+    font-weight: 500;
+    margin: 0;
+}
+
+.section {
+    margin-bottom: 104px;
+}
+
+.sectionTitle {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.listItem p {
+    margin: 0;
+}
+
+.icon {
+    height: 16px;
+    width: 16px;
+    fill: #111827;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.dialog {
+    position: relative;
+    z-index: 50;
+}
+
+.dialogBackdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dialogWrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.dialogPanel {
+    max-width: 512px;
+    row-gap: 16px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    padding: 48px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialogTitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 0 16px 0;
+}
+
+.dialogDescription {
+    font-weight: 500;
+    margin: 0 0 40px 0;
+    text-align: center;
 }

@@ -5,6 +5,8 @@ import { getLocationData } from '../../utils/utils';
 import { removeFromFavorites, setToFavorites } from '../../redux/favorites/favoritesSlice';
 import { selectFavorites } from '../../redux/selectors';
 
+import css from './CarCard.module.css';
+
 const CarCards = ({ car }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,10 +28,17 @@ const CarCards = ({ car }) => {
   const isFavorite = favorites?.some(favCar => favCar.id === id);
   const { city, country } = getLocationData(address);
 
-  const handleToggleFavorite = () => {
-    isFavorite
-      ? dispatch(removeFromFavorites(car))
-      : dispatch(setToFavorites(car));
+  const handleToggleFavorite = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    console.log('Toggle favorite clicked:', { id, isFavorite }); // Для дебагу
+    
+    if (isFavorite) {
+      dispatch(removeFromFavorites(car));
+    } else {
+      dispatch(setToFavorites(car));
+    }
   };
 
   const handleReadMore = () => {
@@ -37,46 +46,51 @@ const CarCards = ({ car }) => {
   };
 
   return (
-    <div className="car-card">
-      <div className="overflow-hidden flex flex-col relative">
+    <div className={css.carCard}>
+      <div className={css.cardInner}>
         <button
           type="button"
           onClick={handleToggleFavorite}
-          className={`heart-button absolute top-4 right-4 ${isFavorite ? 'favorite' : ''}`}
-          aria-label="Toggle favorite"
+          className={`${css.heartButton} ${isFavorite ? css.favorite : ''}`}
+          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
         >
-          <svg className="heart-icon" width="18" height="18">
-            <use href="#icon-heart"></use>
+          <svg className={css.heartIcon} width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              fill={isFavorite ? "#3470FF" : "none"}
+              stroke={isFavorite ? "#3470FF" : "#FFFFFF"}
+              strokeWidth="2"
+            />
           </svg>
         </button>
 
         <img
           src={img}
           alt={`${brand} ${model}`}
-          className="rounded-2xl h-67 w-full object-cover"
+          className={css.image}
           loading="lazy"
         />
 
-        <div className="flex flex-col justify-between h-39 px-3 pt-4">
-          <div className="flex justify-between mb-2">
-            <h3 className="font-medium text-gray-900">
+        <div className={css.cardContent}>
+          <div className={css.header}>
+            <h3 className={css.title}>
               {`${brand} `}
-              <span className="text-primary">{model}</span>
+              <span className={css.highlight}>{model}</span>
               {`, ${year}`}
             </h3>
-            <p className="font-medium text-gray-900">{`$${rentalPrice}`}</p>
+            <p className={css.price}>{`$${rentalPrice}`}</p>
           </div>
 
-          <p className="text-gray-400 text-xs mb-1">
+          <p className={css.meta}>
             {`${city} | ${country} | ${rentalCompany}`}
           </p>
-          <p className="text-gray-400 text-xs">
+          <p className={css.meta}>
             {`${type} | ${mileage}`}
           </p>
 
           <button
             type="button"
-            className="learn-more-button mt-4 w-full"
+            className={css.readMoreButton}
             onClick={handleReadMore}
           >
             Read more

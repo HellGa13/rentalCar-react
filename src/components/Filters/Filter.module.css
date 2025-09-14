@@ -1,236 +1,152 @@
-/* Filter Component Styles */
 .form {
     display: flex;
-    flex-wrap: wrap;
-    padding: 0 0.75rem;
-}
-
-.form.pointer-events-none {
-    pointer-events: none;
-}
-
-.form.opacity-60 {
-    opacity: 0.6;
-}
-
-.form .flex {
-    display: flex;
-}
-
-.form .flex-wrap {
-    flex-wrap: wrap;
-}
-
-.form .items-center {
-    align-items: center;
-}
-
-.form .justify-between {
-    justify-content: space-between;
-}
-
-.form .gap-2 {
-    gap: 0.5rem;
-}
-
-.form .gap-3 {
-    gap: 0.75rem;
-}
-
-.form .mb-2 {
-    margin-bottom: 0.5rem;
-}
-
-.form .flex-col {
     flex-direction: column;
+    gap: 32px;
+    margin-bottom: 56px;
+    margin-left: 258px;
+    margin-right: 258px;
+    margin-top: 84px;
 }
 
-/* Select wrapper styles */
-.select-wrapper {
-    margin-bottom: 0.5rem;
-}
-
-.select-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 0.25rem;
-}
-
-/* Select styles */
-.select-brand,
-.select-price {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem;
-    background-color: white;
-    font-size: 1rem;
-    color: #374151;
-}
-
-.select-brand:focus,
-.select-price:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.select-placeholder {
-    color: #9ca3af;
-}
-
-.select-text {
-    color: #374151;
-}
-
-/* Mileage input styles */
-.select-from,
-.select-to {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.375rem;
-    background-color: white;
-    font-size: 1rem;
-    color: #374151;
-    position: relative;
-}
-
-.select-from:focus,
-.select-to:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.select-from {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.select-to {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-/* Mileage container with divider */
-.relative {
-    position: relative;
-}
-
-.relative.flex {
-    display: flex;
-}
-
-.relative.flex::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 50%;
-    width: 1px;
-    height: 48px;
-    background-color: rgba(138, 138, 137, 0.2);
-}
-
-/* Placeholder spans for inputs */
-.select-placeholder {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9ca3af;
+.disabled {
+    opacity: 0.5;
     pointer-events: none;
-    transition: all 0.2s ease;
 }
 
-/* Hide placeholder when input has value or is focused */
-.select-from:focus+.select-placeholder,
-.select-from:not(:placeholder-shown)+.select-placeholder,
-.select-to:focus+.select-placeholder,
-.select-to:not(:placeholder-shown)+.select-placeholder {
-    opacity: 0;
-}
-
-/* Error styles */
-.error {
-    color: #ef4444;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-.error.opacity-0 {
-    opacity: 0;
-}
-
-.error.opacity-100 {
-    opacity: 1;
-}
-
-.error.flex {
+.formRow {
     display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: nowrap;
 }
 
-.error.items-center {
-    align-items: center;
-}
-
-.error.justify-between {
-    justify-content: space-between;
-}
-
-.error.gap-1 {
-    gap: 0.25rem;
-}
-
-/* Button styles */
-.buttons-wrapper {
+.formGroup {
     display: flex;
-    gap: 0.5rem;
-    align-items: center;
+    gap: 16px;
+    flex: 1;
+    align-items: flex-end;
 }
 
-.button-search {
-    padding: 0.75rem 1.5rem;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 0.375rem;
-    font-size: 1rem;
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.label {
+    font-size: 14px;
     font-weight: 500;
+    color: var(--color-gray);
+    margin-bottom: 8px;
+}
+
+.select {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    height: 48px;
+    min-width: 200px;
+}
+
+.placeholder {
+    color: var(--color-light-gray);
+}
+
+.option {
+    color: var(--color-black);
+}
+
+.error {
+    font-size: 12px;
+    color: #ef4444;
+    margin-top: 4px;
+}
+
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+.mileageGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mileageWrapper {
+    display: flex;
+    gap: 16px;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+}
+
+.input {
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    height: 48px;
+    width: 100%;
+}
+
+.input::placeholder {
+    color: var(--color-black);
+}
+
+.errorGroup {
+    font-size: 12px;
+    color: #ef4444;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-shrink: 0;
+}
+
+.button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--color-button);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
+    height: 48px;
+    white-space: nowrap;
+    min-width: 120px;
 }
 
-.button-search:hover {
-    background-color: #2563eb;
+.button:hover:not(:disabled) {
+    background-color: var(--color-hover);
 }
 
-.button-search:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-}
-
-.button-search:active {
-    background-color: #1d4ed8;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .formContainer {
-        justify-content: center;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .buttonsWrapper {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .buttonSearch {
-        flex: 1;
-        max-width: 120px;
-    }
+.button:disabled {
+    background-color: #a5b4fc;
+    cursor: not-allowed;
 }

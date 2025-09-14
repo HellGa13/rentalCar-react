@@ -67,50 +67,61 @@ export const ReservationForm = ({ onSubmit }) => {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Book your car now</h3>
+        <p className={styles.subtitle}>
+          Stay connected! We are always ready to help you.
+        </p>
+      </div>
+      
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <Form className={styles.form}>
-          <div className={styles.fieldGroup}>
-            <Field
-              id={nameFieldId}
-              name="name"
-              placeholder="Name*"
-              className={styles.input}
-            />
-            <ErrorMessage name="name" component="span" className={styles.error} />
-          </div>
+          <div className={styles.fieldsContainer}>
+            <div className={styles.fieldGroup}>
+              <Field
+                id={nameFieldId}
+                name="name"
+                placeholder="Name*"
+                className={styles.input}
+              />
+              <ErrorMessage name="name" component="span" className={styles.error} />
+            </div>
 
-          <div className={styles.fieldGroup}>
-            <Field
-              id={emailFieldId}
-              name="email"
-              placeholder="Email*"
-              className={styles.input}
-            />
-            <ErrorMessage name="email" component="span" className={styles.error} />
-          </div>
+            <div className={styles.fieldGroup}>
+              <Field
+                id={emailFieldId}
+                name="email"
+                placeholder="Email*"
+                className={styles.input}
+              />
+              <ErrorMessage name="email" component="span" className={styles.error} />
+            </div>
 
-          <FormikDatePicker
-            name="reservationDate"
-            placeholderText="Select reservation date"
-            minDate={new Date()}
-            dateFormat="yyyy-MM-dd"
-          />
-          <ErrorMessage name="reservationDate" component="span" className={styles.error} />
+            <div className={styles.fieldGroup}>
+              <FormikDatePicker
+                name="reservationDate"
+                placeholderText="Select reservation date"
+                minDate={new Date()}
+                dateFormat="yyyy-MM-dd"
+              />
+              <ErrorMessage name="reservationDate" component="span" className={styles.error} />
+            </div>
 
-          <div className={styles.fieldGroup}>
-            <Field
-              id={commentFieldId}
-              as="textarea"
-              rows={3}
-              name="comment"
-              placeholder="Comment"
-              className={styles.textarea}
-            />
-            <ErrorMessage name="comment" component="span" className={styles.error} />
+            <div className={styles.fieldGroup}>
+              <Field
+                id={commentFieldId}
+                as="textarea"
+                rows={3}
+                name="comment"
+                placeholder="Comment"
+                className={styles.textarea}
+              />
+              <ErrorMessage name="comment" component="span" className={styles.error} />
+            </div>
           </div>
 
           <div className={styles.buttonWrapper}>

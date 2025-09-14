@@ -16,16 +16,10 @@ export const selectReservations = state => state.reservations.items;
 export const selectIsReservations = state =>
   state.reservations.items.length > 0;
 
-// Favorites selectors
-export const selectFavorites = (state) => {
-  const favorites = state.favorites;
-  return Array.isArray(favorites) ? favorites : [];
-};
+export const selectFavorites = (state) => state.favorites || [];
 
-// Filters selector
 export const selectFilters = (state) => state.filters || {};
 
-// Додаткові селектори з захистом
 export const selectFavoriteIds = (state) => {
   const favorites = selectFavorites(state);
   return favorites.map(car => car.id);
@@ -36,8 +30,20 @@ export const selectIsFavorite = (carId) => (state) => {
   return favorites.some(car => car.id === carId);
 };
 
+export const makeSelectIsFavorite = () => {
+  return (state, carId) => {
+    const favorites = selectFavorites(state);
+    return favorites.some(car => car.id === carId);
+  };
+};
+
+export const selectFavoritesCount = (state) => {
+  const favorites = selectFavorites(state);
+  return favorites.length;
+};
+
 export const selectCarsWithFavoriteStatus = (state) => {
-  const cars = selectCars(state);
+  const cars = state.cars || []; 
   const favoriteIds = selectFavoriteIds(state);
   
   return cars.map(car => ({
@@ -46,9 +52,8 @@ export const selectCarsWithFavoriteStatus = (state) => {
   }));
 };
 
-// Селектор для автівок, які використовуються у фільтрах
 export const selectCarsForFilters = (state) => {
-  const allCars = selectAllCars(state);
-  const currentCars = selectCars(state);
+  const allCars = state.allCars || [];
+  const currentCars = state.cars || [];
   return allCars.length > 0 ? allCars : currentCars;
 };

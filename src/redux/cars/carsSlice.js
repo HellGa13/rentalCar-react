@@ -9,7 +9,7 @@ export const fetchCars = createAsyncThunk(
     try {
       const response = await axios.get(`${BASE_URL}/cars`, {
         params: {
-          limit: 25, // або більше
+          limit: 25, 
           ...params
         },
       });

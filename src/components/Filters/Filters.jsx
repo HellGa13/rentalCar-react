@@ -151,7 +151,7 @@ const Filter = ({ cars = [] }) => {
                 <>
                   <select {...field} className={css.select}>
                     <option value="" className={css.placeholder}>
-                      To $
+                      Choose a price
                     </option>
                     {price.map((p, index) => (
                       <option key={index} value={p} className={css.option}>
@@ -184,6 +184,7 @@ const Filter = ({ cars = [] }) => {
                 <input
                   type="number"
                   className={css.input}
+                  placeholder="From"
                   {...register('from', {
                     min: {
                       value: 0,
@@ -191,12 +192,12 @@ const Filter = ({ cars = [] }) => {
                     },
                   })}
                 />
-                <span className={css.placeholder}>From</span>
               </label>
               <label className={css.inputWrapper}>
                 <input
                   type="number"
                   className={css.input}
+                  placeholder="To"
                   {...register('to', {
                     min: {
                       value: 0,
@@ -214,7 +215,6 @@ const Filter = ({ cars = [] }) => {
                     },
                   })}
                 />
-                <span className={css.placeholder}>To</span>
               </label>
               <p
                 className={`${css.errorGroup} ${

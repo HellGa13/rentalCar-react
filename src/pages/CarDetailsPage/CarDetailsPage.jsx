@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { fetchCarById } from '../../redux/cars/carsSlice';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
@@ -17,6 +17,7 @@ import styles from './CarDetailsPage.module.css';
 
 const CarDetailsPage = () => {
   const dispatch = useDispatch();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { carId } = useParams();
 
   const carData = useSelector(state =>
@@ -47,6 +48,8 @@ const CarDetailsPage = () => {
           : null,
       })
     );
+
+    setIsDialogOpen(true);
   };
 
   if (!carId) return <div>Car ID not found</div>;
@@ -65,49 +68,116 @@ const CarDetailsPage = () => {
       </div>
 
       <div className={styles.right}>
-        <div className={styles.section}>
-          <h2>{`${carData.brand} ${carData.model}, ${carData.year}`}</h2>
-          <span>{`id: ${carData.id}`}</span>
+        <div className={styles.topSection}>
+          <div className={styles.titleSection}>
+            <h2 className={styles.title}>
+              {`${carData.brand} ${carData.model}, ${carData.year}`}
+            </h2>
+            <span className={styles.carId}>
+              {`id: ${carData.id.substring(0, 6)}...`}
+            </span>
+          </div>
+          
+          <div className={styles.locationSection}>
+            <svg className={styles.icon}>
+              <use href="/public/icon.svg#icon-Location" />
+            </svg>
+            <p className={styles.locationText}>{`${city}, ${country}`}</p>
+            <p className={styles.mileageText}>
+              {`Mileage: ${formatBigNumbers(carData.mileage, ' ')}`}
+            </p>
+          </div>
+          
+          <p className={styles.price}>{`$${carData.rentalPrice}`}</p>
+          <p className={styles.description}>{carData.description}</p>
         </div>
 
         <div className={styles.section}>
-          <p>{`${city}, ${country}`}</p>
-          <p>{`Mileage: ${formatBigNumbers(carData.mileage, ' ')}`}</p>
-          <p>{`$${carData.rentalPrice}`}</p>
-          <p>{carData.description}</p>
-        </div>
-
-        <div className={styles.section}>
-          <p><strong>Rental Conditions:</strong></p>
-          <ul>
+          <p className={styles.sectionTitle}>Rental Conditions:</p>
+          <ul className={styles.list}>
             {carData.rentalConditions.map((item, index) => (
-              <li key={`cond-${index}`}>{item}</li>
+              <li key={`cond-${index}`} className={styles.listItem}>
+                <svg className={styles.icon}>
+                  <use href="/public/icon.svg#icon-Group" />
+                </svg>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
 
         <div className={styles.section}>
-          <p><strong>Car Specifications:</strong></p>
-          <ul>
-            <li>{`Year: ${carData.year}`}</li>
-            <li>{`Type: ${carData.type}`}</li>
-            <li>{`Fuel Consumption: ${carData.fuelConsumption}`}</li>
-            <li>{`Engine Size: ${carData.engineSize}`}</li>
+          <p className={styles.sectionTitle}>Car Specifications:</p>
+          <ul className={styles.list}>
+            <li className={styles.listItem}>
+              <svg className={styles.icon}>
+                <use href="/public/icon.svg#icon-calendar" />
+              </svg>
+              <p>{`Year: ${carData.year}`}</p>
+            </li>
+            <li className={styles.listItem}>
+              <svg className={styles.icon}>
+                <use href="/public/icon.svg#icon-car" />
+              </svg>
+              <p>{`Type: ${carData.type}`}</p>
+            </li>
+            <li className={styles.listItem}>
+              <svg className={styles.icon}>
+                <use href="/public/icon.svg#icon-fuel-pump" />
+              </svg>
+              <p>{`Fuel Consumption: ${carData.fuelConsumption}`}</p>
+            </li>
+            <li className={styles.listItem}>
+              <svg className={styles.icon}>
+                <use href="/public/icon.svg#icon-gear" />
+              </svg>
+              <p>{`Engine Size: ${carData.engineSize}`}</p>
+            </li>
           </ul>
         </div>
 
         <div className={styles.section}>
-          <p><strong>Accessories and functionalities:</strong></p>
-          <ul>
+          <p className={styles.sectionTitle}>Accessories and functionalities:</p>
+          <ul className={styles.list}>
             {carData.functionalities.map((item, index) => (
-              <li key={`func-${index}`}>{item}</li>
+              <li key={`func-${index}`} className={styles.listItem}>
+                <svg className={styles.icon}>
+                  <use href="/public/icon.svg#icon-Group" />
+                </svg>
+                {item}
+              </li>
             ))}
             {carData.accessories.map((item, index) => (
-              <li key={`acc-${index}`}>{item}</li>
+              <li key={`acc-${index}`} className={styles.listItem}>
+                <svg className={styles.icon}>
+                  <use href="/public/icon.svg#icon-Group" />
+                </svg>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
       </div>
+      
+      {isDialogOpen && (
+        <div className={styles.dialog}>
+          <div 
+            className={styles.dialogBackdrop} 
+            onClick={() => setIsDialogOpen(false)} 
+          />
+          <div className={styles.dialogWrapper}>
+            <div className={styles.dialogPanel}>
+              <h2 className={styles.dialogTitle}>
+                Reservation places successfully!
+              </h2>
+              <p className={styles.dialogDescription}>
+                Our manager will contact you soon.
+              </p>
+              <button className={styles.button} onClick={() => setIsDialogOpen(false)}>Okay</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

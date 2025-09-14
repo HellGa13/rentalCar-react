@@ -1,40 +1,64 @@
-// favorites/favoritesSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = JSON.parse(localStorage.getItem('favorites')) || [];
+const loadFavoritesFromStorage = () => {
+  try {
+    const serializedFavorites = localStorage.getItem('favorites');
+    return serializedFavorites ? JSON.parse(serializedFavorites) : [];
+  } catch (error) {
+    console.error('Error loading favorites from localStorage:', error);
+    return [];
+  }
+};
+
+const saveFavoritesToStorage = (favorites) => {
+  try {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  } catch (error) {
+    console.error('Error saving favorites to localStorage:', error);
+  }
+};
+
+const initialState = loadFavoritesFromStorage();
+
 const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    addFavorite: (state, action) => {
-      const updated = [...state, action.payload];
-      localStorage.setItem('favorites', JSON.stringify(updated));
-      return updated;
-    },
-    removeFavorite: (state, action) => {
-      const updated = state.filter((car) => car.id !== action.payload);
-      localStorage.setItem('favorites', JSON.stringify(updated));
-      return updated;
-    },
-    // Додаткові методи для сумісності з вашим компонентом
     setToFavorites: (state, action) => {
       const car = action.payload;
       const exists = state.find(favCar => favCar.id === car.id);
+      
       if (!exists) {
-        const updated = [...state, car];
-        localStorage.setItem('favorites', JSON.stringify(updated));
-        return updated;
+        state.push(car);
+        saveFavoritesToStorage(state);
       }
-      return state;
     },
     removeFromFavorites: (state, action) => {
       const car = action.payload;
-      const updated = state.filter((favCar) => favCar.id !== car.id);
-      localStorage.setItem('favorites', JSON.stringify(updated));
-      return updated;
+      const index = state.findIndex(favCar => favCar.id === car.id);
+      
+      if (index !== -1) {
+        state.splice(index, 1);
+        saveFavoritesToStorage(state);
+      }
     },
+    clearFavorites: (state) => {
+      state.length = 0;
+      saveFavoritesToStorage(state);
+    },
+    loadFavorites: (state) => {
+      const loaded = loadFavoritesFromStorage();
+      state.length = 0;
+      state.push(...loaded);
+    }
   },
 });
 
-export const { addFavorite, removeFavorite, setToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export const { 
+  setToFavorites, 
+  removeFromFavorites, 
+  clearFavorites, 
+  loadFavorites 
+} = favoritesSlice.actions;
+
 export default favoritesSlice.reducer;
