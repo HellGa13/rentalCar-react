@@ -33,7 +33,7 @@ export default defineConfig({
     target: 'es2015',
     minify: 'terser'
   },
-  base: './',
+  base: '/',
   publicDir: 'public',
   assetsInclude: ['**/*.svg']
 });
