@@ -67,7 +67,7 @@ _[English](#english) | [Українська](#українська)_
 
 ### 🌐 Live Demo
 
-[View Live Application](.)
+[View Live Application](https://vercel.com/hellga13s-projects/rental-car-react/FdT7deFmCihe27TLRVmCUPQh5eZS)
 
 ### 📱 Usage
 
@@ -106,7 +106,7 @@ The application integrates with the GoIT Car Rental API:
 **Olga Chursinova**
 
 - GitHub: [@HellGa13](https://github.com/HellGa13)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/olga-chursinova-b40124359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- LinkedIn: [My Profile](https://www.linkedin.com/in/olga-chursinova-b40124359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 - Email: esfero1307@gmail.com
 
 ### 📄 License
@@ -176,7 +176,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ### 🌐 Демо
 
-[Переглянути живий додаток](.)
+[Переглянути живий додаток](https://vercel.com/hellga13s-projects/rental-car-react/FdT7deFmCihe27TLRVmCUPQh5eZS)
 
 ### 📱 Використання
 
@@ -215,7 +215,7 @@ src/
 **Ольга Чурсінова**
 
 - GitHub: [@HellGa13](https://github.com/HellGa13)
-- LinkedIn: [Ваш профіль LinkedIn](https://www.linkedin.com/in/olga-chursinova-b40124359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- LinkedIn: [Мій профіль](https://www.linkedin.com/in/olga-chursinova-b40124359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 - Email: esfero1307@gmail.com
 
 ### 📄 Ліцензія

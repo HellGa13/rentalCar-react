@@ -24,6 +24,15 @@ export const fetchCarById = createAsyncThunk(
   'cars/fetchCarById',
   async (carId, thunkAPI) => {
     try {
+      // Спочатку перевіряємо, чи є авто вже в store
+      const state = thunkAPI.getState();
+      const existingCar = state.cars.allItems.find(car => String(car.id) === String(carId));
+      
+      if (existingCar) {
+        return existingCar;
+      }
+
+      // Якщо немає - завантажуємо з API
       const response = await axios.get(`${BASE_URL}/cars/${carId}`);
       return response.data;
     } catch (error) {
@@ -56,7 +65,11 @@ const initialState = {
 const carsSlice = createSlice({
   name: 'cars',
   initialState,
-  reducers: {},
+  reducers: {
+    clearSelectedCar: (state) => {
+      state.selectedCar = null;
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCars.pending, state => {
@@ -80,10 +93,17 @@ const carsSlice = createSlice({
       .addCase(fetchCarById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.selectedCar = action.payload;
+        
+        // Додаємо авто до allItems, якщо його там немає
+        const existingIndex = state.allItems.findIndex(car => car.id === action.payload.id);
+        if (existingIndex === -1) {
+          state.allItems.push(action.payload);
+        }
       })
       .addCase(fetchCarById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        state.selectedCar = null;
       })
 
       .addCase(fetchCarBrands.pending, state => {
@@ -100,4 +120,7 @@ const carsSlice = createSlice({
       });
   },
 });
+
+export const { clearSelectedCar } = carsSlice.actions;
 export default carsSlice.reducer;
+

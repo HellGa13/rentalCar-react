@@ -6,6 +6,7 @@ import { fetchCarById } from '../../redux/cars/carsSlice';
 import { addReservation } from '../../redux/reservations/reservationsSlice';
 import {
   selectCarById,
+  selectSelectedCar,
   selectIsCarsLoading,
 } from '../../redux/selectors';
 
@@ -20,9 +21,13 @@ const CarDetailsPage = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { carId } = useParams();
 
-  const carData = useSelector(state =>
+  const carFromList = useSelector(state =>
     carId ? selectCarById(state, carId) : undefined
   );
+  
+  const selectedCar = useSelector(selectSelectedCar);
+  
+  const carData = carFromList || (selectedCar?.id === carId ? selectedCar : null);
 
   const isLoading = useSelector(selectIsCarsLoading);
 
